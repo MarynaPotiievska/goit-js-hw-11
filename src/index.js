@@ -24,6 +24,8 @@ const options = {
 
 const observer = new IntersectionObserver(onLoad, options);
 
+const lightbox = new SimpleLightbox('.gallery a', {});
+
 let page = 1;
 
 refs.form.addEventListener('submit', onFormSubmit);
@@ -31,6 +33,7 @@ refs.form.addEventListener('submit', onFormSubmit);
 function onFormSubmit(evt) {
   evt.preventDefault();
   refs.gallery.innerHTML = '';
+  page = 1;
   requestAPI()
     .then(data => {
       if (data.totalHits === 0) {
@@ -44,7 +47,7 @@ function onFormSubmit(evt) {
         'beforeend',
         createMarkup(data.hits)
       );
-      new SimpleLightbox('.gallery a');
+      lightbox.refresh();
       smoothScroling();
       observer.observe(refs.guard);
     })
@@ -112,7 +115,7 @@ function onLoad(entries, observer) {
             'beforeend',
             createMarkup(data.hits)
           );
-          SimpleLightbox.refresh();
+          lightbox.refresh();
           smoothScroling();
           observer.observe(refs.guard);
           if (page === Math.ceil(data.totalHits / 40)) {
