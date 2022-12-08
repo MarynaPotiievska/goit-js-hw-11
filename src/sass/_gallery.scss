@@ -1,0 +1,33 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  background-color: rgb(217, 222, 248);
+}
+
+.photo-card {
+  width: 350px;
+  background-color: rgb(102, 116, 196);
+}
+
+.thumb {
+  height: 227px;
+  overflow: hidden;
+}
+
+.photo-link {
+  object-fit: cover;
+}
+
+.photo-link img {
+  display: block;
+
+  overflow: hidden;
+}
+
+.info {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
